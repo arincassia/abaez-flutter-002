@@ -22,9 +22,34 @@ class Inicio extends StatelessWidget {
         title: Text('Inicio'),
       ),
       body: Center(
-        child: Text(
-          'Bienvenido',
-          style: TextStyle(fontSize: 24),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              'Bienvenido',
+              style: TextStyle(fontSize: 24),
+            ),
+            SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => AcercaDe()),
+                );
+              },
+              child: Text('Ir a Acerca de'),
+            ),
+            SizedBox(height: 10),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Contacto()),
+                );
+              },
+              child: Text('Ir a Contacto'),
+            ),
+          ],
         ),
       ),
     );
