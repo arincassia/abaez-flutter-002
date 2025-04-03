@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'acercade.dart';
+import 'contacto.dart';
 
 void main() {
   runApp(MiApp());
@@ -50,40 +52,6 @@ class Inicio extends StatelessWidget {
               child: Text('Ir a Contacto'),
             ),
           ],
-        ),
-      ),
-    );
-  }
-}
-
-class AcercaDe extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Acerca de'),
-      ),
-      body: Center(
-        child: Text(
-          'Sobre nosotros',
-          style: TextStyle(fontSize: 24),
-        ),
-      ),
-    );
-  }
-}
-
-class Contacto extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Contacto'),
-      ),
-      body: Center(
-        child: Text(
-          'Contáctanos',
-          style: TextStyle(fontSize: 24),
         ),
       ),
     );
