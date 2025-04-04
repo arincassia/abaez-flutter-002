@@ -12,10 +12,14 @@ class MiApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Inicio(),
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 243, 173, 80)),
+      ),
     );
   }
 }
 
+// Pantalla 'Inicio' (StatefulWidget con un contador)
 class Inicio extends StatefulWidget {
   @override
   _InicioState createState() => _InicioState();
@@ -24,11 +28,22 @@ class Inicio extends StatefulWidget {
 class _InicioState extends State<Inicio> {
   int _contador = 0;
 
-  @override
-  void initState() {
-    super.initState();
-    // Aquí puedes inicializar datos o realizar configuraciones necesarias.
-    print("Inicio: initState llamado");
+  void _incrementarContador() {
+    setState(() {
+      _contador++;
+    });
+  }
+
+  void _decrementarContador() {
+    setState(() {
+      _contador--;
+    });
+  }
+
+  void _resetearContador() {
+    setState(() {
+      _contador = 0;
+    });
   }
 
   @override
@@ -47,40 +62,74 @@ class _InicioState extends State<Inicio> {
             ),
             SizedBox(height: 20),
             Text(
-              'Contador: $_contador',
+              'Numero: $_contador',
               style: TextStyle(fontSize: 20),
             ),
-            SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () {
-                setState(() {
-                  _contador++;
-                });
-              },
-              child: Text('Incrementar contador'),
+             if (_contador > 0)
+            Text(
+              'Contador en positivo',
+              style: const TextStyle(color: Colors.green, fontSize: 16),
             ),
-            SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => AcercaDe()),
-                );
-              },
-              child: Text('Ir a Acerca de'),
+          if (_contador < 0)
+            Text(
+              'Contador en negativo',
+             style: const TextStyle(color: Colors.red, fontSize: 16),
             ),
-            SizedBox(height: 10),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => Contacto()),
-                );
-              },
-              child: Text('Ir a Contacto'),
+          if (_contador == 0)
+            Text(
+              ' Contador en cero',
+               style: const TextStyle(color: Colors.black, fontSize: 16),
+            ),
+
+            SizedBox(height: 20),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => AcercaDe()),
+                    );
+                  },
+                  child: Text('Ir a Acerca de'),
+                ),
+                SizedBox(width: 10), 
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => Contacto()),
+                    );
+                  },
+                  child: Text('Ir a Contacto'),
+                ),
+              ],
             ),
           ],
         ),
+      ),
+      floatingActionButton: Row(
+        mainAxisAlignment: MainAxisAlignment.end, 
+        children: [
+          FloatingActionButton(
+            onPressed: _resetearContador,
+            tooltip: 'Reset',
+            child: const Icon(Icons.refresh),
+          ),
+          const SizedBox(width: 16), 
+          FloatingActionButton(
+            onPressed: _decrementarContador,
+            tooltip: 'Decrement',
+            child: const Icon(Icons.remove),
+          ),
+          const SizedBox(width: 16), 
+          FloatingActionButton(
+            onPressed: _incrementarContador,
+            tooltip: 'Increment',
+            child: const Icon(Icons.add),
+          ),
+        ],
       ),
     );
   }

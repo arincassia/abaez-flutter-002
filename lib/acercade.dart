@@ -19,17 +19,23 @@ class AcercaDe extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Acerca de'),
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back),
-          onPressed: () {
-            Navigator.pop(context);
-          },
-        ),
       ),
       body: Center(
-        child: Text(
-          'Sobre nosotros',
-          style: TextStyle(fontSize: 24),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              'Sobre nosotros',
+              style: TextStyle(fontSize: 24),
+            ),
+            SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: Text('Regresar'),
+            ),
+          ],
         ),
       ),
     );

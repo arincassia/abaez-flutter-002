@@ -67,11 +67,18 @@ class _ContactoState extends State<Contacto> {
             ),
             SizedBox(height: 20),
             ElevatedButton(
-              onPressed: () {
-                print("Mensaje recibido: ${_mensajeController.text}");
+             onPressed: () {
+              print("Mensaje recibido: ${_mensajeController.text}");
               },
-              child: Text('Imprimir mensaje en consola'),
-            ),
+              child: Text('Imprimir mensaje en la consola'),
+              ),
+            SizedBox(height: 20), 
+            ElevatedButton(
+               onPressed: () {
+                Navigator.pop(context);
+               },
+              child: Text('Regresar'),
+              ),
           ],
         ),
       ),
