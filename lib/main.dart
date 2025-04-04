@@ -110,27 +110,30 @@ class _InicioState extends State<Inicio> {
         ),
       ),
       floatingActionButton: Row(
-        mainAxisAlignment: MainAxisAlignment.end, 
-        children: [
-          FloatingActionButton(
-            onPressed: _resetearContador,
-            tooltip: 'Reset',
-            child: const Icon(Icons.refresh),
-          ),
-          const SizedBox(width: 16), 
-          FloatingActionButton(
-            onPressed: _decrementarContador,
-            tooltip: 'Decrement',
-            child: const Icon(Icons.remove),
-          ),
-          const SizedBox(width: 16), 
-          FloatingActionButton(
-            onPressed: _incrementarContador,
-            tooltip: 'Increment',
-            child: const Icon(Icons.add),
-          ),
-        ],
-      ),
+  mainAxisAlignment: MainAxisAlignment.end, // Alinea los botones al final (derecha)
+  children: [
+    FloatingActionButton(
+      heroTag: 'reset', // Etiqueta única
+      onPressed: _resetearContador,
+      tooltip: 'Reset',
+      child: const Icon(Icons.refresh),
+    ),
+    const SizedBox(width: 16), // Espaciado entre los botones
+    FloatingActionButton(
+      heroTag: 'decrement', // Etiqueta única
+      onPressed: _decrementarContador,
+      tooltip: 'Decrement',
+      child: const Icon(Icons.remove),
+    ),
+    const SizedBox(width: 16), // Espaciado entre los botones
+    FloatingActionButton(
+      heroTag: 'increment', // Etiqueta única
+      onPressed: _incrementarContador,
+      tooltip: 'Increment',
+      child: const Icon(Icons.add),
+    ),
+  ],
+),
     );
   }
 }
