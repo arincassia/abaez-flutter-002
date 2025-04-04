@@ -16,7 +16,21 @@ class MiApp extends StatelessWidget {
   }
 }
 
-class Inicio extends StatelessWidget {
+class Inicio extends StatefulWidget {
+  @override
+  _InicioState createState() => _InicioState();
+}
+
+class _InicioState extends State<Inicio> {
+  int _contador = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    // Aquí puedes inicializar datos o realizar configuraciones necesarias.
+    print("Inicio: initState llamado");
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,6 +44,20 @@ class Inicio extends StatelessWidget {
             Text(
               'Bienvenido',
               style: TextStyle(fontSize: 24),
+            ),
+            SizedBox(height: 20),
+            Text(
+              'Contador: $_contador',
+              style: TextStyle(fontSize: 20),
+            ),
+            SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {
+                setState(() {
+                  _contador++;
+                });
+              },
+              child: Text('Incrementar contador'),
             ),
             SizedBox(height: 20),
             ElevatedButton(
